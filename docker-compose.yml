@@ -31,6 +31,30 @@ services:
     networks:
       - internal
 
+  ninja1:
+    build:
+      context: .
+    image: moleculer-playground
+    env_file: docker-compose.env
+    environment:
+      SERVICES: ninja
+    depends_on:
+      - nats
+    networks:
+      - internal
+      
+  ninja2:
+    build:
+      context: .
+    image: moleculer-playground
+    env_file: docker-compose.env
+    environment:
+      SERVICES: ninja
+    depends_on:
+      - nats
+    networks:
+      - internal
+
   nats:
     image: nats:2
     networks:
